@@ -15,6 +15,7 @@ def cost_function(X, labels, w, epsilon=1e-8):
 
 
 def gradient_descent(x_start, loss_func, eta):
+    """ Standard gradient descent yielding updates as a generator """
     x = x_start
     while True:
         x.requires_grad = True
@@ -43,6 +44,8 @@ for i, w in enumerate(ws):
         print(f"Iteration {i + 1} | Loss: {loss_function(w)}")
         print(f"Current W = {w}")
     if i > 20000:
+        print("\n---- Final Result -----")
+        print(f"{trace[-1]}")
         break
 
 fig = plt.figure()

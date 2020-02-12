@@ -2,7 +2,6 @@ import torch
 import itertools
 
 
-# Task 1.1
 def gd_back(x_start, loss_func, alpha=0.5, beta=0.5, s=1):
     """ Compute minimum using gradient descent with backtracking """
     x = x_start
@@ -29,6 +28,7 @@ def gd_back(x_start, loss_func, alpha=0.5, beta=0.5, s=1):
 
 
 def optim(xs, limit=0.1):
+    """ Read sequence of updates until gradient norm is less than limit """
     for i, (x, grad) in enumerate(xs):
         grad_norm = torch.sqrt(torch.dot(grad, grad))
         if grad_norm < limit:
@@ -41,6 +41,7 @@ def optim(xs, limit=0.1):
     print(f"Gradient Norm {grad_norm}\n\n")
 
 
+# Task 1.1
 A = torch.zeros(size=(5, 5))
 for i, j in itertools.product(range(5), repeat=2):
     A[i, j] = 1 / (i + j + 1)
