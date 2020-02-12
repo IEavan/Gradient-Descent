@@ -28,6 +28,7 @@ def gradient_descent(x_start, loss_func, eta):
         yield x
 
 
+# Load data in standard format for linear classifier
 data = np.loadtxt("newiris.csv", delimiter=",")
 X = np.c_[data[:, 2:-1], np.ones(data.shape[0])]
 labels = data[:, -1]
